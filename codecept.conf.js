@@ -20,5 +20,24 @@ exports.config = {
   include: {
     I: './steps_file.js'
   },
+  
+  mocha: {
+      reporterOptions: {
+        'codeceptjs-cli-reporter': {
+          stdout: '-',
+          options: {
+            steps: true,
+          }
+        },
+        'mocha-junit-reporter': {
+          stdout: './output/console.log',
+          options: {
+            mochaFile: './output/result.xml',
+          },
+          attachments: true // Agregar capturas de pantalla para pruebas que fallan
+        }
+      }
+    },
+  
   name: 'angular-sample'
 }
